@@ -2,14 +2,11 @@ import React, { useState } from "react";
 import "./App.css";
 import { checkCardNumber } from "./checkCardNumber";
 import debitcard from "../src/assets/debit-card.png";
-import americanexpress from "../src/assets/american-express.png";
-import mastercard from "../src/assets/master-card.png";
-import visa from "../src/assets/visa.png";
-import validmark from "../src/assets/check-mark.png";
-import invalidmark from "../src/assets/close.png";
+import RenderCardProvider from "./components/RenderCardProvider";
+import RenderValidationMark from "./components/RenderValidationMark";
 
 function App() {
-  const [cardNumber, setCardNumber] = useState("");
+  const [cardNumber, setCardNumber] = useState(null);
   const [cardProvider, setCardProvider] = useState("");
   const [isCardNumberValid, setIsCardNumberValid] = useState(false);
 
@@ -18,62 +15,6 @@ function App() {
     const verification = checkCardNumber(e.target.value);
     setCardProvider(verification[0]);
     setIsCardNumberValid(verification[1]);
-  };
-
-  const cardHasSuficientLength = () => {
-    return (
-      cardNumber.length === 13 ||
-      cardNumber.length === 15 ||
-      cardNumber.length === 16
-    );
-  };
-
-  const returnCardProvider = () => {
-    if (cardProvider && cardHasSuficientLength())
-      return (
-        <>
-          <p>Your card issuer:</p>
-          <img
-            src={
-              cardProvider === "visa"
-                ? visa
-                : cardProvider === "mastercard"
-                ? mastercard
-                : americanexpress
-            }
-            alt={cardProvider}
-            height="100"
-            style={{ marginBottom: "20px" }}
-          ></img>
-        </>
-      );
-
-    if (!cardHasSuficientLength)
-      return (
-        <p style={{ color: "red" }}>
-          The card number must have 13, 15 or 16 digits.
-        </p>
-      );
-
-    if (!cardNumber)
-      return <p style={{ color: "red" }}>Card number can not be empty.</p>;
-
-    return <p style={{ color: "red" }}>The card number is not valid.</p>;
-  };
-
-  const returnIsCardValid = () => {
-    if (cardProvider && cardHasSuficientLength())
-      return (
-        <>
-          <p>Is a card number valid?</p>
-          <img
-            src={isCardNumberValid ? validmark : invalidmark}
-            alt={isCardNumberValid ? "validmark" : "invalidmark"}
-            height="100"
-            style={{ marginBottom: "20px" }}
-          ></img>
-        </>
-      );
   };
 
   return (
@@ -101,8 +42,12 @@ function App() {
         style={{ width: "20em" }}
       />
       <br />
-      {returnCardProvider()}
-      {returnIsCardValid()}
+      <RenderCardProvider cardProvider={cardProvider} cardNumber={cardNumber} />
+      <RenderValidationMark
+        cardProvider={cardProvider}
+        isCardNumberValid={isCardNumberValid}
+        cardNumber={cardNumber}
+      />
     </div>
   );
 }
