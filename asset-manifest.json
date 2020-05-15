@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/cardverification/static/css/main.d1b05096.chunk.css",
+    "main.js": "/cardverification/static/js/main.34c9c824.chunk.js",
+    "main.js.map": "/cardverification/static/js/main.34c9c824.chunk.js.map",
+    "runtime-main.js": "/cardverification/static/js/runtime-main.262ca953.js",
+    "runtime-main.js.map": "/cardverification/static/js/runtime-main.262ca953.js.map",
+    "static/js/2.581580af.chunk.js": "/cardverification/static/js/2.581580af.chunk.js",
+    "static/js/2.581580af.chunk.js.map": "/cardverification/static/js/2.581580af.chunk.js.map",
+    "index.html": "/cardverification/index.html",
+    "precache-manifest.2a542eec0acd7c21cef5fbcb403b7afa.js": "/cardverification/precache-manifest.2a542eec0acd7c21cef5fbcb403b7afa.js",
+    "service-worker.js": "/cardverification/service-worker.js",
+    "static/css/main.d1b05096.chunk.css.map": "/cardverification/static/css/main.d1b05096.chunk.css.map",
+    "static/js/2.581580af.chunk.js.LICENSE.txt": "/cardverification/static/js/2.581580af.chunk.js.LICENSE.txt",
+    "static/media/american-express.png": "/cardverification/static/media/american-express.e509875b.png",
+    "static/media/master-card.png": "/cardverification/static/media/master-card.e5ad2efa.png",
+    "static/media/visa.png": "/cardverification/static/media/visa.6acbc86d.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.262ca953.js",
+    "static/js/2.581580af.chunk.js",
+    "static/css/main.d1b05096.chunk.css",
+    "static/js/main.34c9c824.chunk.js"
+  ]
+}
