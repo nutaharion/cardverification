@@ -3,11 +3,7 @@ import cardValidLength from "../helpers/cardValidLength";
 import validmark from "../../src/assets/check-mark.png";
 import invalidmark from "../../src/assets/close.png";
 
-const RenderValidationMark = ({
-  cardProvider,
-  isCardNumberValid,
-  cardNumber,
-}) => {
+const ValidationMark = ({ cardProvider, isCardNumberValid, cardNumber }) => {
   if (cardProvider && cardValidLength(cardNumber))
     return (
       <>
@@ -17,11 +13,11 @@ const RenderValidationMark = ({
           alt={isCardNumberValid ? "validmark" : "invalidmark"}
           height="100"
           style={{ marginBottom: "20px" }}
-        ></img>
+        />
       </>
     );
 
   return <></>;
 };
 
-export default RenderValidationMark;
+export default ValidationMark;

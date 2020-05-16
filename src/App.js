@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "./App.css";
-import { checkCardNumber } from "./checkCardNumber";
 import debitcard from "../src/assets/debit-card.png";
-import RenderCardProvider from "./components/RenderCardProvider";
-import RenderValidationMark from "./components/RenderValidationMark";
+import CardProvider from "./components/CardProvider";
+import ValidationMark from "./components/ValidationMark";
+import { selectCardIssuer } from "./selectCardIssuer";
+import { validateCardNumber } from "./validateCardNumber";
 
 function App() {
   const [cardNumber, setCardNumber] = useState(null);
@@ -12,9 +13,8 @@ function App() {
 
   const handleCardNumberInputChange = (e) => {
     setCardNumber(e.target.value);
-    const verification = checkCardNumber(e.target.value);
-    setCardProvider(verification[0]);
-    setIsCardNumberValid(verification[1]);
+    setCardProvider(selectCardIssuer(e.target.value));
+    setIsCardNumberValid(validateCardNumber(e.target.value));
   };
 
   return (
@@ -25,7 +25,7 @@ function App() {
         alt="Debit card"
         height="100"
         style={{ marginBottom: "30px" }}
-      ></img>
+      />
       <label
         htmlFor="cardNumber"
         style={{
@@ -41,9 +41,8 @@ function App() {
         onChange={handleCardNumberInputChange}
         style={{ width: "20em" }}
       />
-      <br />
-      <RenderCardProvider cardProvider={cardProvider} cardNumber={cardNumber} />
-      <RenderValidationMark
+      <CardProvider cardProvider={cardProvider} cardNumber={cardNumber} />
+      <ValidationMark
         cardProvider={cardProvider}
         isCardNumberValid={isCardNumberValid}
         cardNumber={cardNumber}
